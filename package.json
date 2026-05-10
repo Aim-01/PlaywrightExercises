@@ -1,0 +1,23 @@
+{
+  "name": "playwrightexercises",
+  "version": "1.0.0",
+  "description": "There will be a Playwright test project for improving AQA skills.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aim-01/PlaywrightExercises.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Aim-01/PlaywrightExercises/issues"
+  },
+  "homepage": "https://github.com/Aim-01/PlaywrightExercises#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^25.6.2"
+  }
+}

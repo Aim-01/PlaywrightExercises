@@ -34,10 +34,10 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
+    // {
+    //   name: 'chromium',
+    //   use: { ...devices['Desktop Chrome'] },
+    // },
 
     // {
     //   name: 'firefox',
@@ -64,10 +64,10 @@ export default defineConfig({
     //   name: 'Microsoft Edge',
     //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
     // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    // },
+    {
+      name: 'Google Chrome',
+      use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+    },
   ],
 
   /* Run your local dev server before starting the tests */
@@ -77,3 +77,39 @@ export default defineConfig({
   //   reuseExistingServer: !process.env.CI,
   // },
 });
+
+ // Страница входа (https://lms.threadqa.ru/xpath-practice-hub/basics#practice-elements)
+export class RegistrationFormPage { // переименовать класс в форму реги
+    constructor(page) {
+
+        this.page = page;
+        this.usernameField = page.locator('//input[@name="username"]'); // локаторы для полей ввода
+        this.emailField = page.locator("#user-email-input");
+        this.passwordField = page.locator("#user-password-input");
+        this.commentField = page.locator("#user-comment-textarea");
+
+        this.countryDropdown = page.locator("data-testid='country-dropdown'");
+
+        this.termsCheckbox = page.locator("#terms-checkbox");
+        this.newsletterRadioBtn = page.locator("#newsletter-yes");
+        this.newsNoRadioBtn = page.locator("#newsletter-no");
+
+    }
+    async open(){
+        await this.page.goto('https://lms.threadqa.ru/xpath-practice-hub/basics#practice-elements'); // вход на страницу тренажёра
+    }
+
+    async login(username, email, password, comment) { // вводим логин-пароль емэйл и коммент
+        await this.usernameField.fill(username);
+        await this.pemailField.fill(email);
+        await this.passwordField.fill(password);
+        await this.commentField.fill(comment);
+
+        await this.countryDropdown.click();
+       await this.countryDropdown.selectOption();
+        await this.termsCheckbox.check();
+        await this.newsletterRadioBtn.check();
+     
+    }
+}
+

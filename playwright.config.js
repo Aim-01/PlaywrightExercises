@@ -88,7 +88,7 @@ export class RegistrationFormPage { // переименовать класс в 
         this.passwordField = page.locator("#user-password-input");
         this.commentField = page.locator("#user-comment-textarea");
 
-        this.countryDropdown = page.locator("data-testid='country-dropdown'");
+        this.countryDropdown = page.locator("#country-select");
 
         this.termsCheckbox = page.locator("#terms-checkbox");
         this.newsletterRadioBtn = page.locator("#newsletter-yes");

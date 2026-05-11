@@ -8,7 +8,8 @@ export class RegistrationFormPage {
     this.passwordField = page.locator('#user-password-input');
     this.commentField = page.locator('#user-comment-textarea');
 
-    this.countryDropdown = page.locator('[data-testid="country-dropdown"]');
+    this.countryDropdown = page.getByTestId('country-dropdown');
+
     this.termsCheckbox = page.locator('#terms-checkbox');
 
     this.newsletterYes = page.locator('#newsletter-yes');
@@ -28,8 +29,8 @@ export class RegistrationFormPage {
 
 async selectCountry(countryValue) {
   await this.countryDropdown.click();
-  await this.countryDropdown.selectOption(countryValue);
-  await this.page.getByText(countryValue);
+  
+     await this.page.getByText(countryValue, { exact: true }).click();
 }
 
   async acceptTerms() {
